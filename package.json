@@ -1,0 +1,35 @@
+{
+  "name": "opensymbiose.pl",
+  "license": "UNLICENSED",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "biome check . --write",
+    "format": "biome format --write .",
+    "lintstaged": "lint-staged -c ./lint-staged.config.mjs",
+    "prepare": "husky",
+    "cms": "npx decap-server"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrolib/seo": "^1.0.0-beta.8",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.4",
+    "astro-webmanifest": "^1.0.0",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7"
+  }
+}
