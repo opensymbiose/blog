@@ -1,17 +1,47 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
 
-const { title, url, description, pubDate, author, image } = Astro.props;
+type PostData = CollectionEntry<'posts'>['data'];
+
+interface Props {
+  title: PostData['title'];
+  url: string;
+  description: PostData['description'];
+  pubDate: string;
+  author: PostData['author'];
+  image: PostData['image']['url'];
+  alt?: string;
+}
+
+const {
+  title,
+  url,
+  description,
+  pubDate,
+  author,
+  image,
+  alt = title,
+} = Astro.props;
 ---
 
 <article class="flex flex-col flex-1 h-full">
   <a href={url} title={title} class="group block">
     <div class="block w-full lg:col-span-2">
-      <Image
-        width={1200}
-        height={630}
+      <Picture
+        width={720}
+        height={480}
         src={image}
-        alt={title}
+        alt={alt}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        layout="constrained"
+        quality="mid"
+        fit="cover"
+        position="center"
+        widths={[320, 480, 720]}
+        sizes="(min-width: 768px) 368px, (min-width: 640px) 50vw, calc(100vw - 4rem)"
+        pictureAttributes={{ class: 'block' }}
         class="object-cover w-full h-full bg-center aspect-12/8 rounded-xl"
       />
     </div>

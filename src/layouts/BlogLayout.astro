@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 
@@ -24,11 +24,22 @@ const { frontmatter } = Astro.props;
             <em>{frontmatter.description}</em>
           </p>
         </div>
-        <Image
+        <Picture
           width={1280}
           height={720}
           src={frontmatter.image.url}
           alt={frontmatter.image.alt}
+          formats={['avif', 'webp']}
+          fallbackFormat="jpg"
+          layout="constrained"
+          quality="mid"
+          fit="cover"
+          position="center"
+          widths={[640, 768, 1024, 1280]}
+          sizes="(min-width: 768px) 768px, calc(100vw - 4rem)"
+          loading="eager"
+          fetchpriority="high"
+          pictureAttributes={{ class: 'block' }}
           class="object-cover object-center w-full aspect-12/7 rounded-xl mt-4"
         />
         <div class="flex flex-col justify-between mt-4 md:flex-row">
