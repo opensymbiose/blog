@@ -15,7 +15,8 @@ export default defineConfig({
     webmanifest({
       name: 'OpenSymbiose - Blog',
       short_name: 'OpenSymbiose',
-      description: 'OpenSymbiose - Blog',
+      description:
+        'Blog o praktyce inspekcji drzew. Bez teorii oderwanej od terenu.',
       icon: 'public/favicon.svg',
       start_url: '/',
       theme_color: '#ffffff',
